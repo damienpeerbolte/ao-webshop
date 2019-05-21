@@ -12,13 +12,19 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return redirect('home');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/categories', 'CategoryController@index')->name('categories');
-Route::get('/categories/{name}', 'CategoryController@viewCategory')->name('categoriesView');
-Route::get('/product/{id}', 'ProductController@viewProduct')->name('product');
+Route::get('/addAmount/{articleId}', 'CartController@addAmount');
+Route::get('/removeAmount/{articleId}', 'CartController@removeAmount');
+Route::get('/deleteFromCart/{articleId}', 'CartController@deleteFromCart');
 
+Route::get('/home', 'CategoryController@index')->name('home');
+Route::get('/addToCartViaShop/{articleId}', 'CartController@addToCartViaShop');
+Route::get('/addToCartViaArticle/{category}/{article}/{articleId}', 'CartController@addToCartViaArticle');
+Route::get('/{category}/{product}', 'ProductController@index');
+Route::get('/cart', 'CartController@index');
+Route::get('/checkout', 'CartController@checkout');
+Route::get('/orders', 'OrderController@index');

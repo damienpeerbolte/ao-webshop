@@ -27,3 +27,7 @@ img.productImage {
 div.productInfoSmall {
     margin-top: 20px;
 }
+
+h6.pricetag {
+    font-weight: bold;
+}
